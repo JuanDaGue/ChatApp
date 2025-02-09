@@ -8,6 +8,21 @@ const app = express();
 const server = http.createServer(app);
 const io = new socketIO(server);
 
+io.on("connection", (socket) => {
+  console.log("A user connected");
+
+  socket.on("disconnect", () => {
+    console.log("A user disconnected");
+  });
+  socket.on("chat", (data) => {
+    console.log(data);
+    socket.broadcast.emit("chat", data);
+  });
+  socket.on("message", (data) => {
+    console.log(data);
+    socket.broadcast.emit("message", data);
+  });
+});
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
