@@ -1,44 +1,16 @@
-import express from "express";
 import http from "http";
-import {Server as socketIO} from "socket.io";
-import cors from "cors";
-import morgan from "morgan";
+import dotenv from "dotenv";
+import createApp from "./app.js";
+import setupSocket from "./socket.js";
 
-const app = express();
+dotenv.config();
+
+const app = createApp();
 const server = http.createServer(app);
-const io = new socketIO(server);
+setupSocket(server);
 
-io.on("connection", (socket) => {
-  console.log("A user connected");
+const PORT = process.env.PORT || 3000;
 
-  socket.on("disconnect", () => {
-    console.log("A user disconnected");
-  });
-  socket.on("chat", (data) => {
-    console.log(data);
-    socket.broadcast.emit("chat", data);
-  });
-  socket.on("message", (data) => {
-    console.log(data);
-    socket.broadcast.emit("message", data);
-  });
-});
-app.use(morgan("dev"));
-app.use(express.json());
-app.use(cors());
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-
-io.on("connection", (socket) => {
-  console.log("A user connected");
-
-  socket.on("disconnect", () => {
-    console.log("A user disconnected");
-  });
-});
-
-server.listen(3000, () => {
-  console.log("Server is running on port 3000");
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

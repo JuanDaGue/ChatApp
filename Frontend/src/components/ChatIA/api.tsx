@@ -1,8 +1,15 @@
 // src/api.js
 
-const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyCBMWZDy6IoTKSpsYG8ycvyQ7iezSaNjPk"; // Ensure this environment variable is set
-console.log(API_URL);
-export const fetchAIResponse = async (message) => {
+const API_URL = import.meta.env.VITE_API_URL; // Ensure this environment variable is set
+interface AIResponse {
+    candidates: {
+        content: {
+            text: string;
+        }[];
+    }[];
+}
+
+export const fetchAIResponse = async (message: string): Promise<string> => {
     try {
         const response = await fetch(API_URL, {
             method: "POST",
@@ -11,7 +18,7 @@ export const fetchAIResponse = async (message) => {
             },
             body: JSON.stringify({
                 contents: [{
-                    parts: [{ text: message}]
+                    parts: [{ text: message }]
                 }]
             })
         });
@@ -22,7 +29,7 @@ export const fetchAIResponse = async (message) => {
             return "Error fetching response.";
         }
 
-        const data = await response.json().catch(() => {
+        const data: AIResponse | null = await response.json().catch(() => {
             // Handle JSON parsing errors
             console.error("Error parsing JSON response");
             return null;
@@ -32,7 +39,7 @@ export const fetchAIResponse = async (message) => {
             return "Error fetching response.";
         }
 
-        const botReply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "I'm not sure how to respond.";
+        const botReply = data?.candidates?.[0]?.content?.[0]?.text || "I'm not sure how to respond.";
         return botReply;
     } catch (error) {
         console.error("Error fetching AI response:", error);
