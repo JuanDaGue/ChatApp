@@ -3,12 +3,11 @@ import { useChat } from "../../context/ChatContext";
 
 const ChatList: React.FC = () => {
     const { chats, setSelectedChat } = useChat();
-
     return (
         <div>
-        <h2 className="text-xl font-bold mb-3 text-gray-800">Chats</h2>
+        <h2 className="text-xl font-bold mb-3 text-gray-100">Chats</h2>
         {chats.length === 0 ? (
-            <p className="text-gray-500">No active chats</p>
+            <p className="text-gray-200">No active chats</p>
         ) : (
             chats.map((chat) => (
             <div
@@ -22,8 +21,8 @@ const ChatList: React.FC = () => {
                 className="w-12 h-12 rounded-full object-cover"
                 />
                 <div className="flex-1">
-                <p className="font-semibold text-gray-900">{chat.clientName}</p>
-                <p className="text-sm text-gray-600 truncate">{chat.lastMessage}</p>
+                <p className="font-semibold text-gray-400">{chat.clientName}</p>
+                <p className="text-sm text-gray-200 truncate">{chat.lastMessage}</p>
                 </div>
                 <p className="text-xs text-gray-400">{chat.timestamp}</p>
             </div>

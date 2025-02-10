@@ -29,7 +29,7 @@ const defaultChats: Chat[] = [
     clientName: "Michael Smith",
     lastMessage: "I’ll try that. Thanks!",
     timestamp: "9:15 AM",
-    avatar: "../../public/user2.png",
+    avatar: "/user2.png",
     messages: [
       { text: "Hey, my account is locked.", sender: "client" },
       { text: "Try resetting your password.", sender: "agent" },
