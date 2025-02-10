@@ -10,6 +10,7 @@ const ChatWindow: React.FC = () => {
     const { selectedChat,  setChats } = useChat();
     const [isTyping, setIsTyping] = useState(false);
     const [loading, setLoading] = useState(false);
+    //console.log(selectedChat, isTyping, loading);
 
     useEffect(() => {
         const handleMessage = (data: { text: string; chatId: string }) => {

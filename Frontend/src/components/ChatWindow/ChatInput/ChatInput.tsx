@@ -9,12 +9,12 @@ const socket = io("/");
 const ChatInput: React.FC<ChatInputProps> = ({ selectedChat, setIsTyping, setLoading }) => {
     const { setChats } = useChat();
     const [message, setMessage] = useState("");
-
     const sendMessage = async () => {
         if (message.trim() === "") return;
 
         if (selectedChat.isAIChat) {
             // Handle AI-based chat
+            console.log(message);
             socket.emit("message", { text: message, chatId: selectedChat.id });
             setChats(prevChats =>
                 prevChats.map(chat =>
