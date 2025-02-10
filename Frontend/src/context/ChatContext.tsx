@@ -1,13 +1,5 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-
-type Chat = {
-  id: string;
-  clientName: string;
-  lastMessage: string;
-  timestamp: string;
-  avatar: string;
-  messages: { text: string; sender: "agent" | "client" }[];
-};
+import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { Chat, ChatContextType } from "../types/types";
 
 const defaultChats: Chat[] = [
   {
@@ -15,7 +7,7 @@ const defaultChats: Chat[] = [
     clientName: "Alice Johnson",
     lastMessage: "Thank you!",
     timestamp: "10:30 AM",
-    avatar: "../../public/user1.png",
+    avatar: "/user1.png",
     messages: [
       { text: "Hello, I need help with my order.", sender: "client" },
       { text: "Sure! What seems to be the issue?", sender: "agent" },
@@ -23,6 +15,7 @@ const defaultChats: Chat[] = [
       { text: "I’ll check that for you.", sender: "agent" },
       { text: "Thank you!", sender: "client" },
     ],
+    isAIChat: false,
   },
   {
     id: "2",
@@ -35,15 +28,20 @@ const defaultChats: Chat[] = [
       { text: "Try resetting your password.", sender: "agent" },
       { text: "I’ll try that. Thanks!", sender: "client" },
     ],
+    isAIChat: false,
+  },
+  {
+    id: "3",
+    clientName: "AI Assistant",
+    lastMessage: "Hello! How can I assist you today?",
+    timestamp: "9:00 AM",
+    avatar: "/Captura.PNG",
+    messages: [
+      { text: "Hello! How can I assist you today?", sender: "agent" },
+    ],
+    isAIChat: true, // This chat is AI-based
   },
 ];
-
-type ChatContextType = {
-  chats: Chat[];
-  setChats: React.Dispatch<React.SetStateAction<Chat[]>>;
-  selectedChat: Chat | null;
-  setSelectedChat: React.Dispatch<React.SetStateAction<Chat | null>>;
-};
 
 const ChatContext = createContext<ChatContextType | undefined>(undefined);
 

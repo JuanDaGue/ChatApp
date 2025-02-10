@@ -1,16 +1,16 @@
 import React from "react";
-import {ChatList} from "../ChatList";
-import {ChatWindow} from "../ChatWindow";
+import { ChatList } from "../ChatList";
+import { ChatWindow } from "../ChatWindow";
 
 const ChatLayout: React.FC = () => {
     return (
-        <div className="flex h-screen w-full">
+        <div className="flex flex-col h-screen w-full md:flex-row">
             {/* Sidebar for Chat List */}
-            <aside className="w-1/4 border-r shadow-md p-3">
+            <aside className="w-full md:w-1/4 border-r p-3">
                 <ChatList />
             </aside>
             {/* Chat Window covering the remaining width */}
-            <main className="w-3/4 p-4 flex flex-col">
+            <main className="w-full md:w-3/4 p-4 flex flex-col">
                 <div className="flex-1 flex justify-center items-center">
                     <ChatWindow />
                 </div>
