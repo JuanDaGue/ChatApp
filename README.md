@@ -3,7 +3,7 @@
 # Proyecto de Chat: Cliente-Agente y Chatbot
 
 Este proyecto es una aplicación de chat que permite la comunicación entre un cliente y un agente, así como la interacción con un chatbot. Está construido con una arquitectura full-stack, utilizando **React** para el frontend y **Node.js** con **Socket.IO** para el backend.
-
+![alt text](image.png)
 ---
 
 ## Tabla de Contenidos
