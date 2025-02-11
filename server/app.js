@@ -1,19 +1,30 @@
+// Import necessary modules
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 
+/**
+ * Creates and configures an Express application.
+ * @returns {express.Application} Configured Express app.
+ */
 const createApp = () => {
-  const app = express();
+    const app = express();
 
-  app.use(morgan("dev"));
-  app.use(express.json());
-  app.use(cors());
+    // Middleware for logging HTTP requests
+    app.use(morgan("dev"));
 
-  app.get("/", (req, res) => {
-    res.send("Hello World!");
-  });
+    // Middleware to parse JSON request bodies
+    app.use(express.json());
 
-  return app;
+    // Middleware to enable Cross-Origin Resource Sharing (CORS)
+    app.use(cors());
+
+    // Basic route to test server functionality
+    app.get("/", (req, res) => {
+        res.send("Hello World!");
+    });
+
+    return app;
 };
 
 export default createApp;

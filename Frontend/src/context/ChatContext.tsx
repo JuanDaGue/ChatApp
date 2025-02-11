@@ -16,7 +16,7 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     // Estado para la lista de chats, inicializado desde el localStorage o con valores por defecto
     const [chats, setChats] = useState<Chat[]>(() => {
         const savedChats = localStorage.getItem("chats");
-        return savedChats ? JSON.parse(savedChas) : defaultChats;
+        return savedChats ? JSON.parse(savedChats) : defaultChats;
     });
 
     // Estado para el chat seleccionado

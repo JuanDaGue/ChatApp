@@ -21,7 +21,7 @@ const socket = io("/");
 const ChatInput: React.FC<ChatInputProps> = ({ selectedChat, setIsTyping, setLoading }) => {
     const { setChats } = useChat(); // Contexto de chat para actualizar la lista de chats
     const [message, setMessage] = useState(""); // Estado del mensaje actual
-
+    console.log(message);
     /**
      * Función `sendMessage`: Envía un mensaje al chat seleccionado.
      * - Si el chat es con IA, obtiene una respuesta de la API de IA.
