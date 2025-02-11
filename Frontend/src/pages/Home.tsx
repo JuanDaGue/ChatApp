@@ -3,10 +3,7 @@ import { ChatLayout } from "../components/ChatLayout";
 const Home: React.FC = () => {
   return (
     <ChatProvider>
-
-
         <ChatLayout/>
-
     </ChatProvider>
   );
 };
