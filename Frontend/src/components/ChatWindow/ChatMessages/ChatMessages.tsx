@@ -16,7 +16,6 @@ const ChatMessages: React.FC<ChatMessagesProps> = ({ messages, isLoading, isTypi
 
     <div className="flex-1 overflow-y-auto p-2 md:p-4 space-y-2 md:space-y-4">
         {/* Renderiza cada mensaje */}
-        {console.log("Messages", messages)}
         {messages.map((msg, index) => (
             <div
                 key={index}

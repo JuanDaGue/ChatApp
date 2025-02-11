@@ -26,6 +26,7 @@ export interface ChatInputProps {
     selectedChat: Chat;
     setIsTyping: React.Dispatch<React.SetStateAction<boolean>>;
     setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+    setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
 }
 
 export interface ChatHeaderProps {
